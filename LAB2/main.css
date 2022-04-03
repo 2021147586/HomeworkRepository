@@ -1,0 +1,36 @@
+.goButt {
+    background-color: lightgreen;
+    text-align: center;
+    padding: 10px;
+    width: 75px;
+}
+
+.nahButt {
+    background-color: lightcoral;
+    text-align: center;
+    padding: 10px;
+    width: 75px;
+}
+
+.inButt {
+    background-color: white;
+    text-align: center;
+    height: 10px;
+    border: none;
+    color: black;
+    margin: 3px;
+}
+
+.upButt {
+    background-color: white;
+    text-align: center;
+    height: 10px;
+    border: none;
+    color: black;
+    margin: 3px;
+}
+
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40px;
+}
