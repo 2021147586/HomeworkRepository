@@ -1,0 +1,111 @@
+/* CSS stylesheet for login.html & signup.html */
+.goButt {
+    background-color: lightgreen;
+    text-align: center;
+    padding: 10px;
+    width: 75px;
+}
+
+.nahButt {
+    background-color: lightcoral;
+    text-align: center;
+    padding: 10px;
+    width: 75px;
+}
+
+/* CSS stylesheet (mostly) for index.html */
+
+header{
+    width: 950px;
+    border-bottom-style: solid;
+}
+
+@keyframes headMove{
+    from {margin-left: 80%;
+        width: 300%};
+    to {margin-left: 0%;
+        width: 100%;}
+}
+
+.headr{
+    color: blue;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 60px;
+    animation-duration: 2s;
+    animation-name: headMove;
+    animation-timing-function: linear;
+}
+
+ul{
+    list-style-type: none;
+}
+
+header ul{
+    width: 950px;
+    margin: 0;
+    padding: 10px 0;
+    background-color: lightgray;
+    text-align: left ;
+}
+
+header ul li{
+    display: inline;
+}
+
+header ul li a{
+    padding: 10px 10px;
+    transition: background-color 0.5s;
+    text-decoration: none;
+}
+
+header ul li a:hover{
+   background-color: lightpink; 
+}
+
+main{
+    width: 950px;
+}
+
+main ul li{
+    display: inline-block;
+    margin: 20px;
+    padding: 0;
+    border-style: solid;
+}
+
+main ul li p{
+    font-size: 13px;
+}
+
+.spinPdt{
+    transition: transform 0.5s;
+}
+
+.spinPdt:hover{
+    transform: rotate(360deg);
+}
+
+.bigPdt{
+    transition: transform 2s;
+}
+
+.bigPdt:hover{
+    transform: translateY(34px) scaleY(1.27);
+}
+
+footer{
+    width: 950px;
+    bottom: 0px;
+    margin-top: 100px;
+    border-top-style: double;
+    color: rgb(82, 80, 80);
+    background-color: lightgray;
+}
+
+footer nav{
+    font-size: 25px;
+}
+
+#yonsei{
+    color: darkblue
+}
