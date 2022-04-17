@@ -1,0 +1,136 @@
+/* CSS stylesheet for login.html & signup.html */
+.goButt {
+    background-color: lightgreen;
+    text-align: center;
+    padding: 10px;
+    width: 75px;
+}
+
+.nahButt {
+    background-color: lightcoral;
+    text-align: center;
+    padding: 10px;
+    width: 75px;
+}
+
+
+/* CSS stylesheet (mostly) for index.html */
+* {
+    box-sizing: border-box;
+}
+
+.header{
+    padding: 30px;
+    background-color: lightgrey;
+}
+.header h1{
+    font-size: 40px;
+    color: blue;
+}
+.header p{
+    font-size: 13px;
+}
+
+.navBar{
+    display: flex;
+    background-color: antiquewhite;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+.navBar a{
+    text-decoration: none;
+    padding: 10px;
+    color: cadetblue;
+    text-align: center;
+    transition: color 0.5s;
+}
+.navBar a:hover{
+    color: purple;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+}
+.category{
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0;
+    border-bottom: 1px solid lightgray;
+}
+.column{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+.image{
+    border: 2px solid grey;
+    padding: 50px 0;
+    width: 22%
+}
+
+.multi{
+    text-align: center;
+    column-count: 2;
+    column-gap: 10px;
+    column-rule-style: dotted;
+}
+
+@media (max-width: 480px){
+    .navBar {
+        flex-direction: column;
+    }
+    .category h2{
+        text-align: center;
+    }
+    .column{
+        flex-direction: column;
+    }
+    .image{
+        width: 98%;
+    }
+    .multi{
+        column-count: 1;
+        column-rule-style: none;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 800px){
+    .navBar {
+        flex-direction: column;
+    }
+    .category h2{
+        text-align: center;
+    }
+    .column{
+        max-width: 100%;
+    }
+    .image{
+        width: 50%;
+    }
+    .multi{
+        column-count: 1;
+        column-rule-style: none;
+    }
+}
+
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    bottom: 0px;
+    border-top-style: double;
+    color: rgb(82, 80, 80);
+    background-color: lightgray;
+}
+
+.footer nav{
+    font-size: 25px;
+}
+
+#yonsei{
+    color: darkblue
+}
