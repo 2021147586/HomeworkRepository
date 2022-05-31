@@ -20,13 +20,6 @@ header{
     border-bottom-style: solid;
 }
 
-@keyframes headMove{
-    from {margin-left: 80%;
-        width: 300%};
-    to {margin-left: 0%;
-        width: 100%;}
-}
-
 .headr{
     color: blue;
     font-family: 'Bebas Neue', cursive;
@@ -113,4 +106,8 @@ footer nav{
 
 #yonsei{
     color: darkblue
+}
+
+.displayedItem{
+    
 }

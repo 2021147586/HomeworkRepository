@@ -9,103 +9,107 @@ fetch('product.json')
 
 window.onscroll = () => {
 	if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-		load();
+		loader();
 	}
 }
-
 	
 let categoryGroup = [];
-let filterGroup = [];
+let searchGroup = [];
 
 
-const category = document.querySelector('#category');
-const searchTerm = document.querySelector('#searchTerm');
+const category = document.querySelector('#categoryChoose');
+const searchTerm = document.querySelector('#searchTermChoose');
 const buttonCheck = document.querySelector('#searchResult');
 const main = document.querySelector('#mainPart');
 
-function init (product) {
+function init(product) {
 	let recentCategory = category.value;
 	let recentSearch = '';
 
-	filterGroup = product;
-	update();
+	searchGroup = product;
+	updater();
 	
-	buttonCheck.addEventListener('click', selectTerm)
-
-	if (category.value === recentCategory && searchTerm.value.trim() === recentSearch) {
-		return;
-	} 
-	else {
-		recentCategory = category.value;
-		recentSearch = searchTerm.value.trim();
-		if (category.value === 'All') {
-		  categoryGroup = product;
-		  selectTerm();
+	buttonCheck.addEventListener('click', categoryFiltering);
+	
+	function categoryFiltering (e) {
+		e.preventDefault();
+		
+		count = 1;
+		categoryGroup = [];
+		searchGroup = [];
+		
+		if (category.value === recentCategory && searchTerm.value.trim() === recentSearch) {
+			return;
 		} 
 		else {
-		const lowerCaseType = category.value.toLowerCase();
-		categoryGroup = product.filter( product => product.type === lowerCaseType );
-		selectTerm();
+			recentCategory = category.value;
+			recentSearch = searchTerm.value.trim();
+			if (category.value == 'All') {
+				  categoryGroup = product;
+				  selectTerm();
+			} 
+			else {
+				const lowerCaseType = category.value.toLowerCase();
+        		categoryGroup = product.filter( product => product.type === lowerCaseType );
+				selectTerm();
+			}
 		}
 	}
 }
 	
 
 function selectTerm() {
-	if (searchTerm.value.trim() !== '') {
+	if (searchTerm.value.trim() === '') {
+		searchGroup = categoryGroup;
+	} 
+	else {
 		let lower_term = searchTerm.value.trim().toLowerCase();
-		filterGroup = categoryGroup.filter(product => product.name.includes(lower_term));
-		/*
-		for (let i = 0; i < categoryGroup.length; i++) {
-			if (categoryGroup[i].name.indexOf(lower_term) !== -1) {
-				filterGroup.push(categoryGroup[i]);
-			}
-		}
-		*/
-	} else {
-		filterGroup = categoryGroup;
-	}
-	
-	update();
+		searchGroup = categoryGroup.filter(product => product.name.includes(lower_term));
+	}	
+	updater();
 }
 
-function update() {
-	while (main.firstChild == true) {
+function updater() {
+	while (main.firstChild) {
 		main.removeChild(main.firstChild);
 	}
 	
-	if (filterGroup.length === 0) {
-		const msg = document.createElement('p');
+	if (searchGroup.length === 0) {
+		const msg = document.createElement('div');
+		msg.className = 'msg';
 		msg.innerHTML = 'No results to display';
 		main.appendChild(msg);
-	} else {
-		console.log(filterGroup.length);
-		load();
+	} 
+	else {
+		for (const product of searchGroup) {
+			fetchBlob(product);
+		}
 	}
 }
 
-function load () {
-	for (let i = (count - 1) * 6; i < count * 6; i++) {
-		if (i >= filterGroup.length) {
+function loader () {
+	for (let y=8*(count - 1); y<count*8; y++) {
+		if (y >= searchGroup.length) {
 			break;
 		}
-		fetchBlob(filterGroup[i]);
+		fetchBlob(searchGroup[y]);
 	}
 	
-	if ((count - 1) * 6 >= filterGroup.length) {
-		count = filterGroup.length;
+	if (8*(count - 1) >= searchGroup.length) {
+		count = searchGroup.length;
 	} else {
-		count = count + 1;
+		count += 1;
 	}
 }
 
+
 function fetchBlob(product) {
-	const url =`image/${product.image}`;
+	const url = product.image;
 	
 	fetch(url)
 	.then(response => {
-		if (!response.ok) {
-			throw new Error('HTTP error: $(response.status)');
+		if (response.ok == false) {
+			throw new Error(`HTTP error: ${response.status}`);
 		}
 		return response.blob();
 	})
@@ -118,35 +122,36 @@ function fetchBlob(product) {
 }
 
 
-function show (imageURL, productname, productprice, productinfo) {
-	const p = document.createElement('p');
+function show(imageURL, pname, pprice, pinfo) {
+	const div = document.createElement('div');
 	const img = document.createElement('img');
 	
-	p.className = 'item_display';
-	p.id = productname + '/' + productprice + '/' + productinfo;
-	p.addEventListener('click', explain);
+	div.className = 'displayedItem';
+	div.id = pname + '/' + pprice + '/' + pinfo;
+	div.addEventListener('click', explain);
 	
 	img.src = imageURL;
-	img.alt = productname;
+	img.alt = pname;
 	img.className = 'newitem';
 	
-	main.appendChild(p);
-	p.appendChild(img);
+	main.appendChild(div);
+	div.appendChild(img);
 }
 
-function explain (e) {
+function explain(e) {
 	let targetID = e.target.parentNode.id;
-	let detaillist = targetID.split('/');
+	let splitList = targetID.split('/');
 	
 	if (targetID.indexOf('explain-') === -1) {
 		e.target.parentNode.id = 'explain-' + targetID;
 		
-		const detail = document.createElement('p');
-		detail.className = 'item_detail';
-		let str = '<br>이름: &nbsp;' + detaillist[0] + '<br><br>가격: &nbsp;' + detaillist[1] + ' 원<br><br>설명: &nbsp;' + detaillist[2];
-		detail.innerHTML = str;
-		document.getElementById(e.target.parentNode.id).appendChild(detail);
-	} else {
+		const detailed = document.createElement('div');
+		detailed.className = 'item_detailed';
+		let str = '<br>이름: &nbsp;' + splitList[0] + '<br><br>가격: &nbsp;' + splitList[1] + ' 원<br><br>설명: &nbsp;' + splitList[2];
+		detailed.innerHTML = str;
+		document.getElementById(e.target.parentNode.id).appendChild(detailed);
+	} 
+	else {
 		e.target.parentNode.id = targetID.substring(8);
 		let check = document.getElementById(e.target.parentNode.id);
 		check.removeChild(check.childNodes[1]);
