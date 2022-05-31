@@ -1,0 +1,72 @@
+[
+	{
+		"name" : "Charmander",
+		"price" : 4000,
+		"image" : "charmander_1.png",
+		"info" : "매운맛 포켓몬빵",
+		"type" : "Rare"
+	},
+	{
+		"name" : "Pidgey",
+		"price" : 2000,
+		"image" : "pidgey_2.png",
+		"info" : "내가 가지고 있음",
+		"type" : "Common"
+	},
+	{
+		"name" : "Pikachu",
+		"price" : 6000,
+		"image" : "pikachu_3.png",
+		"info" : "마스코트",
+		"type" : "Ultra-rare"
+	},
+	{
+		"name" : "Zubat",
+		"price" : 2000,
+		"image" : "zubat_4.png",
+		"info" : "눈이 없음",
+		"type" : "Common"
+	},
+	{
+		"name" : "Dugtrio",
+		"price" : 2000,
+		"image" : "dugtrio_5.png",
+		"info" : "머리가 3개",
+		"type" : "Common"
+	},
+	{
+		"name" : "Farfetchd",
+		"price" : 2000,
+		"image" : "farfetchd_6.png",
+		"info" : "파돌리기",
+		"type" : "Common"
+	},
+	{
+		"name" : "Gengar",
+		"price" : 5000,
+		"image" : "gengar_7.png",
+		"info" : "인기 많은 귀신",
+		"type" : "Rare"
+	},
+	{
+		"name" : "Exeggcute",
+		"price" : 2000,
+		"image" : "exeggcute_8.png",
+		"info" : "알이 여러 개",
+		"type" : "Common"
+	},
+	{
+		"name" : "Kangaskhan",
+		"price" : 7000,
+		"image" : "kangaskhan_9.png",
+		"info" : "1+1 포켓몬",
+		"type" : "Ultra-rare"
+	},
+	{
+		"name" : "Mr.Mime",
+		"price" : 4000,
+		"image" : "mr-mime_10.png",
+		"info" : "투명한 벽 만들 수 있음",
+		"type" : "Rare"
+	}
+]
