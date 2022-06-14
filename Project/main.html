@@ -27,6 +27,12 @@
             playBtn = document.getElementById("linking");
             playBtn.style.display = "inline";
         }
+
+        function mobileDirect() {
+            if (window.innerWidth <= 600) {
+                location.href = "youtube_link.html"
+            }
+        }
         
     </script>
     <input type="checkbox" id="sidebarIcon" checked="true">
@@ -88,7 +94,7 @@
                         <label for="sit12">&nbsp;입력 안함</label><br>
                         
                 </form>
-                <button type="button" class="submitbtn" onclick="getSituations(); closeSidebar();" >검색</button>
+                <button type="button" class="submitbtn" onclick="getSituations(); closeSidebar(); mobileDirect();" >검색</button>
             </div>
         </div>
     </div>

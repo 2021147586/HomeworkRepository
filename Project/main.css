@@ -12,7 +12,7 @@
 }
 .body{
     background-image: url('main_background.gif');
-
+    background-repeat: no-repeat;
 }
 @keyframes blink-effect {
     50% {
@@ -219,7 +219,7 @@
 
 @media (max-width: 600px) {
     .body{
-        background-image: url('main_background_mobile.jpg');
+        background-repeat: repeat-y;
     }
     #linking{
         width: 50%;
